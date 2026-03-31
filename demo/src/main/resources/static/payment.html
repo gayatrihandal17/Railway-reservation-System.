@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+<title>Payment</title>
+<link rel="stylesheet" href="payment.css">
+</head>
+
+<body>
+
+<div class="box">
+<h2>Payment</h2>
+
+<p id="fare"></p>
+
+<button onclick="payNow()">Pay Now</button>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+document.getElementById("fare").innerText="₹"+localStorage.getItem("fare");
+</script>
+
+</body>
+</html>

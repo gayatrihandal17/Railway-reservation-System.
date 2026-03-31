@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+<title>Ticket</title>
+<link rel="stylesheet" href="confirmation.css">
+</head>
+
+<body>
+
+<div class="ticket">
+<h2>Ticket Confirmed </h2>
+
+<p id="pnr"></p>
+<p id="train"></p>
+
+</div>
+
+<script>
+document.getElementById("pnr").innerText="PNR: "+Math.floor(Math.random()*1000000000);
+document.getElementById("train").innerText=localStorage.getItem("train");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Passenger Details</title>
+  <link rel="stylesheet" href="passenger.css">
+</head>
+
+<body>
+
+<header>
+  <h2>Passenger Details</h2>
+</header>
+
+<div class="container">
+
+  <!-- TRAIN INFO -->
+  <div id="trainInfo"></div>
+
+  <!-- FORM -->
+  <form onsubmit="submitPassenger(event)">
+    <input type="text" id="name" placeholder="Passenger Name" required>
+    <input type="number" id="age" placeholder="Age" required>
+
+    <select id="gender">
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+
+    <button type="submit">Proceed to Payment</button>
+  </form>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+// Load train info
+const train = localStorage.getItem("train");
+const fare = localStorage.getItem("fare");
+
+document.getElementById("trainInfo").innerHTML = `
+  <h3>${train}</h3>
+  <p>Fare: ₹${fare}</p>
+`;
+
+// Save passenger data
+function submitPassenger(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+  const gender = document.getElementById("gender").value;
+
+  localStorage.setItem("name", name);
+  localStorage.setItem("age", age);
+  localStorage.setItem("gender", gender);
+
+  window.location.href = "payment.html";
+}
+</script>
+
+</body>
+</html>

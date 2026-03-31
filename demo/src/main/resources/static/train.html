@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Trains</title>
+
+<link rel="stylesheet" href="train.css">
+</head>
+
+<body>
+
+<header>
+  <h2>Available Trains</h2>
+</header>
+
+<div class="container" id="trainList"></div>
+
+<!-- MAIN JS FILE -->
+<script src="script.js"></script>
+
+<script>
+const from = localStorage.getItem("from");
+const to = localStorage.getItem("to");
+
+let html = "";
+
+// ✅ Check if data exists
+if (!from || !to) {
+  document.getElementById("trainList").innerHTML =
+    "<h3>Please search from home page first</h3>";
+} else {
+
+  trains.forEach(t => {
+    let f = t.route.indexOf(from);
+    let tt = t.route.indexOf(to);
+
+    if (f !== -1 && tt !== -1 && f < tt) {
+      html += `
+      <div class="card">
+        <h3>${t.name}</h3>
+        <p><b>${from} → ${to}</b></p>
+        <p>Departure: ${t.depart} | Arrival: ${t.arrive}</p>
+        <p>Fare: ₹${t.fare}</p>
+        <button onclick="selectTrain('${t.name}', ${t.fare})">
+          Book
+        </button>
+      </div>`;
+    }
+  });
+
+  // ✅ If no trains found
+  if (html === "") {
+    html = "<h3>No trains available for this route</h3>";
+  }
+
+  document.getElementById("trainList").innerHTML = html;
+}
+</script>
+
+</body>
+</html>
